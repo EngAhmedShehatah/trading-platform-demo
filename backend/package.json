@@ -1,15 +1,23 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "Trading Platform Backend - Real-time Stock Data Streaming",
+  "main": "server.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "trading",
+    "graphql",
+    "websocket",
+    "stocks"
+  ],
+  "author": "Ahmed Abdelhalim",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@apollo/server": "^5.1.0",
     "graphql": "^16.12.0",
