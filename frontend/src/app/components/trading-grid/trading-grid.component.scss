@@ -1,0 +1,63 @@
+.trading-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  margin: 0;
+  color: #1a365d;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background: #16a34a;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+:host ::ng-deep .ag-theme-alpine {
+  --ag-background-color: #ffffff;
+  --ag-header-background-color: #f8fafc;
+  --ag-odd-row-background-color: #f8fafc;
+}
+
+:host ::ng-deep .price-up {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+:host ::ng-deep .price-down {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+:host ::ng-deep .price-neutral {
+  color: #64748b;
+}
