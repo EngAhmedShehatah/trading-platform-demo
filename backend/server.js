@@ -1,6 +1,13 @@
+const express = require('express');
 const { ApolloServer } = require('@apollo/server');
-const { startStandaloneServer } = require('@apollo/server/standalone');
+const { expressMiddleware } = require('@apollo/server/express4');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 const WebSocket = require('ws');
+const http = require('http');
+
+const app = express();
+const httpServer = http.createServer(app);
 
 // In-memory store for real-time data
 let stockData = {};
@@ -135,12 +142,25 @@ const server = new ApolloServer({
 
 // Start server
 async function startServer() {
-  const { url } = await startStandaloneServer(server, {
-    listen: { port: 4000 },
-  });
+  await server.start();
 
-  console.log(`🚀 Server ready at ${url}`);
-  console.log(`📊 GraphQL Playground: ${url}`);
+  // Apply middleware
+  app.use(
+    '/',
+    cors({
+      origin: '*',
+      credentials: true,
+    }),
+    bodyParser.json(),
+    expressMiddleware(server)
+  );
+
+  const PORT = process.env.PORT || 4000;
+
+  httpServer.listen(PORT, () => {
+    console.log(`🚀 Server ready at http://localhost:${PORT}/`);
+    console.log(`📊 GraphQL endpoint: http://localhost:${PORT}/`);
+  });
 
   // Start WebSocket connection to Finnhub
   startFinnhubWebSocket();
