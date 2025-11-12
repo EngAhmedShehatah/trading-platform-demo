@@ -49,3 +49,11 @@ Senior Frontend Developer
 ---
 
 _Built to demonstrate technical capabilities for energy trading platform development._
+
+## 📸 Live Demo
+
+**[View Live Demo](https://trading-platform-demo.vercel.app/)**
+
+![Trading Platform Demo](./screenshots/demo.png)
+
+_Real-time stock data streaming with AG Grid_
